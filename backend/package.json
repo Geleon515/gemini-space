@@ -1,0 +1,30 @@
+{
+  "name": "space-invaders-backend",
+  "version": "1.0.0",
+  "description": "Backend para el juego Space Invaders",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest",
+    "db:init": "mysql -u $DB_USER -p$DB_PASS $DB_NAME < schema.sql",
+    "sonar": "sonar-scanner"
+  },
+  "dependencies": {
+    "cors": "2.8.5",
+    "dotenv": "16.4.5",
+    "express": "4.19.2",
+    "mysql2": "3.11.4"
+  },
+  "devDependencies": {
+    "eslint": "9.5.0",
+    "jest": "29.7.0",
+    "nodemon": "3.1.0",
+    "sonarqube-scanner": "^4.3.2",
+    "supertest": "6.3.4"
+  },
+  "engines": {
+    "node": "20.17.0",
+    "npm": "10.8.2"
+  }
+}

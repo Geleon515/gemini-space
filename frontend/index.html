@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Invaders - Kaboom</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #000;
+            color: #0f0; /* Verde retro */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Evita barras de scroll */
+        }
+        canvas {
+            background-color: #000;
+            border: 2px solid #0f0;
+            cursor: none; /* Oculta el cursor sobre el juego */
+        }
+        #start-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        h1 {
+            color: #0f0;
+            text-shadow: 0 0 5px #0f0;
+            margin: 0;
+        }
+        input[type="text"] {
+            background-color: #000;
+            border: 1px solid #0f0;
+            color: #0f0;
+            padding: 8px;
+            font-family: inherit;
+        }
+        button {
+            background-color: #000;
+            border: 1px solid #0f0;
+            color: #0f0;
+            padding: 10px 20px;
+            font-family: inherit;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        button:hover {
+            background-color: #0f0;
+            color: #000;
+        }
+        #game-container {
+            display: none; /* Se oculta hasta que empiece el juego */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="start-screen">
+        <h1>SPACE INVADERS</h1>
+        <label for="playerName">Ingresa tu nombre:</label>
+        <input type="text" id="playerName" maxlength="15" placeholder="PLAYER ONE">
+        <button id="startGameButton">Empezar Juego</button>
+    </div>
+
+    <div id="game-container">
+        </div>
+        
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
