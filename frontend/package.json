@@ -1,17 +1,21 @@
 {
   "name": "space-invaders-frontend",
   "version": "1.0.0",
+  "type": "module",
   "description": "Frontend para el juego Space Invaders",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "sonar": "sonar-scanner"
+    "sonar": "sonar-scanner",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
   },
   "dependencies": {
     "kaboom": "3000.1.17"
   },
   "devDependencies": {
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
     "sonarqube-scanner": "^4.3.2",
     "vite": "^5.0.0"
   },

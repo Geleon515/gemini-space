@@ -1,0 +1,13 @@
+# Directorios generados por herramientas
+
+# Dependencias de Node
+/node_modules
+
+# Reportes de Cobertura (Jest, etc.)
+/coverage
+
+# Archivos de trabajo del SonarQube Scanner
+/.scannerwork
+
+# Archivos de caché de Vite (Opcional, pero recomendado)
+/dist
