@@ -12,4 +12,6 @@ node_modules/
 # Archivos de caché de Vite (Opcional, pero recomendado)
 /dist
 
+.env
+
 sonar-project.properties
