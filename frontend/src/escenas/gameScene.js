@@ -25,6 +25,7 @@ export default function createGameScene(k) {
         go,
         loop,
         rand,
+        choose, // <<< 1. AGREGAMOS 'choose' AQUÍ
         onUpdate,
         on,
         destroy,
@@ -79,23 +80,24 @@ export default function createGameScene(k) {
                     enemy.hurt(1);
                 });
 
-                // --- ¡AQUÍ ESTÁ LA CORRECCIÓN! ---
-                // Cuando el enemigo muere (hp=0), ejecutamos
-                // toda la lógica de puntuación aquí mismo.
                 enemy.on('death', () => {
-                    // 1. Destruimos al enemigo
-                    destroy(enemy);
-
+                    // 1. Emite el evento primero (para efectos visuales si los hubiera)
+                    // (Nota: Como simplificamos la lógica en el paso anterior, 
+                    //  la lógica principal está aquí abajo, no en un 'emit' externo)
+                    
                     // 2. Sumamos el puntaje y actualizamos la UI
                     score += 100;
                     scoreText.text = `SCORE: ${formatScore(score)}`;
                     player.score = score;
 
-                    // 3. Comprobamos si el jugador ha ganado
-                    // (el enemigo ya está destruido, así que .length es correcto)
-                    if (enemyFleet.children.length === 0) {
+                    // 3. Comprobamos victoria
+                    // (Restamos 1 porque este enemigo aún cuenta en .children hasta que se destruye)
+                    if (enemyFleet.children.length - 1 <= 0) {
                         go('gameOver', { score: score });
                     }
+
+                    // 4. Finalmente destruimos al enemigo
+                    destroy(enemy);
                 });
             }
         }
@@ -125,16 +127,15 @@ export default function createGameScene(k) {
         loop(ENEMY_FIRE_RATE, () => {
             if (enemyFleet.children.length === 0) return;
 
-            const randomEnemy = rand(enemyFleet.children);
+            // <<< 2. CORRECCIÓN PRINCIPAL: Usamos 'choose' en lugar de 'rand'
+            const randomEnemy = choose(enemyFleet.children);
+            
             if (randomEnemy && randomEnemy.shoot) {
                 randomEnemy.shoot();
             }
         });
 
         // --- Lógica de Colisiones y Eventos ---
-
-        // ¡YA NO NECESITAMOS 'on('enemy-dead')'!
-        // Lo hemos borrado.
 
         player.on('hurt', () => {
             lives = player.hp();
