@@ -1,7 +1,7 @@
 # Directorios generados por herramientas
 
 # Dependencias de Node
-/node_modules
+node_modules/
 
 # Reportes de Cobertura (Jest, etc.)
 /coverage
