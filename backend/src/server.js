@@ -71,10 +71,13 @@ app.get('*', (req, res) => {
 });
 
 // --- Iniciar Servidor ---
-app.listen(PORT, async () => {
-    console.log(`Servidor backend corriendo en http://localhost:${PORT}`);
-    // Probamos la conexión a la BD al iniciar
-    await testConnection();
-});
+// Solo iniciamos el servidor si este archivo se ejecuta directamente,
+// NO cuando se importa desde los tests.
+if (process.env.NODE_ENV !== 'test') {
+    app.listen(PORT, async () => {
+        console.log(`Servidor backend corriendo en http://localhost:${PORT}`);
+        await testConnection();
+    });
+}
 
 export default app; // Exportamos 'app' para usarlo en las pruebas (supertest)

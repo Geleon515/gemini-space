@@ -2,5 +2,5 @@ projectKey=space-invader-back
 serverUrl=http://localhost:9000
 serverVersion=25.9.0.112764
 dashboardUrl=http://localhost:9000/dashboard?id=space-invader-back
-ceTaskId=9302335b-2dd0-48d7-9785-3e7f29a89281
-ceTaskUrl=http://localhost:9000/api/ce/task?id=9302335b-2dd0-48d7-9785-3e7f29a89281
+ceTaskId=a63ec220-687f-474b-afa4-de287c49c70b
+ceTaskUrl=http://localhost:9000/api/ce/task?id=a63ec220-687f-474b-afa4-de287c49c70b
